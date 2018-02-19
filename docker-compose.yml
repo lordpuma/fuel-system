@@ -1,0 +1,38 @@
+version: '3.3'
+services:
+  db:
+    container_name: database
+    image: postgres
+    environment:
+      POSTGRES_PASSWORD: dev
+      POSTGRES_USER: db
+      POSTGRES_DB: db
+    ports:
+      - 5433:5432
+  node:
+    container_name: backend
+    build:
+      context: ./backend
+      dockerfile: ./docker-images/Dockerfile-backend
+    user: 'node'
+    working_dir: /home/node/app
+    volumes:
+      - ./backend:/home/node/app
+    ports:
+      - 3000:3000
+    command: 'npm start'
+    depends_on:
+      - db
+  frontend:
+    container_name: frontend
+    build: 
+      context: ./frontend
+      dockerfile: ./docker-images/Dockerfile-frontend
+    user: 'node'
+    working_dir: /home/node/app
+    volumes:
+      - ./frontend:/home/node/app
+    ports:
+      - 4200:4200
+    command: 'npm start'
+

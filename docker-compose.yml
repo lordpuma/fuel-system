@@ -27,7 +27,7 @@ services:
     container_name: frontend
     build: 
       context: ./frontend
-      dockerfile: ./docker-images/Dockerfile-frontend
+      dockerfile: ./docker-images/Dockerfile-front
     user: 'node'
     working_dir: /home/node/app
     volumes:

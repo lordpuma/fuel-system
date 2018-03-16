@@ -1,6 +1,8 @@
 [submodule "frontend"]
 	path = frontend
 	url = git@github.com:lordpuma/fuel-system-frontend.git
+	branch = master
 [submodule "backend"]
 	path = backend
 	url = git@github.com:lordpuma/fuel-system-backend.git
+	branch = master

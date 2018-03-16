@@ -13,26 +13,26 @@ services:
     container_name: backend
     build:
       context: ./backend
-      dockerfile: ./docker-images/Dockerfile-backend
+      dockerfile: ./Dockerfile
     user: 'node'
     working_dir: /home/node/app
     volumes:
       - ./backend:/home/node/app
     ports:
       - 3000:3000
-    command: 'npm start'
+    command: bash -c 'yarn && nodemon node app.js'
     depends_on:
       - db
   frontend:
     container_name: frontend
     build: 
       context: ./frontend
-      dockerfile: ./docker-images/Dockerfile-front
+      dockerfile: ./Dockerfile
     user: 'node'
     working_dir: /home/node/app
     volumes:
       - ./frontend:/home/node/app
     ports:
       - 4200:4200
-    command: 'npm start'
+    command: bash -c 'yarn && yarn start'
 
